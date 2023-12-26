@@ -5,11 +5,11 @@ QT += core widgets
 INCLUDEPATH += $$PWD/plugininterface \
         $$PWD
 HEADERS = plugininterface/plugininterface.h \
-        helloworld.h
+        searchonweb.h
 SOURCES = plugininterface/plugininterface.cpp \
-        helloworld.cpp
+        searchonweb.cpp
 
-TARGET = $$qtLibraryTarget(helloworld)
+TARGET = $$qtLibraryTarget(searchonweb)
 
 unix:{
     QMAKE_RPATHDIR=$ORIGIN

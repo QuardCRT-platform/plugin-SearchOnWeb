@@ -1,20 +1,20 @@
-#ifndef HELLOWORLD_H_
-#define HELLOWORLD_H_
+#ifndef SERCHONWEB_H_
+#define SERCHONWEB_H_
 
 #include "plugininterface.h"
 
-#define PLUGIN_NAME    "Hello World"
+#define PLUGIN_NAME    "Search On Web"
 #define PLUGIN_VERSION "0.0.1"
 
-class HelloWorld : public PluginInterface
+class SearchOnWeb : public PluginInterface
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.quardCRT.PluginInterface" FILE "./plugininterface/plugininterface.json")
     Q_INTERFACES(PluginInterface)
 
 public:
-    HelloWorld() : m_action(nullptr) {}
-    virtual ~HelloWorld() {}
+    SearchOnWeb() : m_mainMenu(nullptr) {}
+    virtual ~SearchOnWeb() {}
 
     int init(QMap<QString, QString> params, QWidget *parent);
 
@@ -23,14 +23,15 @@ public:
     QString name() { return PLUGIN_NAME; }
     QString version() { return PLUGIN_VERSION; }
 
-    QMenu *mainMenu() { return nullptr; }
-    QAction *mainAction() { return m_action; }
+    QMenu *mainMenu() { return m_mainMenu; }
+    QAction *mainAction() { return nullptr; }
 
     QMenu *terminalContextMenu(QString selectedText, QString workingDirectory, QMenu *parentMenu) {Q_UNUSED(selectedText);Q_UNUSED(workingDirectory);Q_UNUSED(parentMenu); return nullptr;}
-    QList<QAction *> terminalContextAction(QString selectedText, QString workingDirectory, QMenu *parentMenu) {Q_UNUSED(selectedText);Q_UNUSED(workingDirectory);Q_UNUSED(parentMenu); return QList<QAction *>();}
+    QList<QAction *> terminalContextAction(QString selectedText, QString workingDirectory, QMenu *parentMenu);
 
 private:
-    QAction *m_action;
+    QMenu *m_mainMenu;
+    QActionGroup *actionGroup;
 };
 
-#endif /* HELLOWORLD_H_ */
+#endif /* SERCHONWEB_H_ */
