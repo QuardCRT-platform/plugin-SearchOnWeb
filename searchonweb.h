@@ -4,7 +4,7 @@
 #include "plugininterface.h"
 
 #define PLUGIN_NAME    "Search On Web"
-#define PLUGIN_VERSION "0.0.1"
+#define PLUGIN_VERSION "0.0.2"
 
 class SearchOnWeb : public PluginInterface
 {
@@ -23,8 +23,11 @@ public:
     QString name() { return PLUGIN_NAME; }
     QString version() { return PLUGIN_VERSION; }
 
-    QMenu *mainMenu() { return m_mainMenu; }
-    QAction *mainAction() { return nullptr; }
+    QMap<QString,void *> metaObject() {
+        QMap<QString,void *> ret;
+        ret.insert("QMenu", (void *)m_mainMenu);
+        return ret;
+    }
 
     QMenu *terminalContextMenu(QString selectedText, QString workingDirectory, QMenu *parentMenu) {Q_UNUSED(selectedText);Q_UNUSED(workingDirectory);Q_UNUSED(parentMenu); return nullptr;}
     QList<QAction *> terminalContextAction(QString selectedText, QString workingDirectory, QMenu *parentMenu);
