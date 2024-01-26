@@ -1,10 +1,12 @@
 #ifndef SERCHONWEB_H_
 #define SERCHONWEB_H_
 
+#include <QTranslator>
+#include <QApplication>
 #include "plugininterface.h"
 
 #define PLUGIN_NAME    "Search On Web"
-#define PLUGIN_VERSION "0.0.2"
+#define PLUGIN_VERSION "0.0.3"
 
 class SearchOnWeb : public PluginInterface
 {
@@ -18,8 +20,8 @@ public:
 
     int init(QMap<QString, QString> params, QWidget *parent);
 
-    void setLanguage(const QLocale &language,QApplication *app) {Q_UNUSED(language);Q_UNUSED(app);}
-    void retranslateUi() {}
+    void setLanguage(const QLocale &language,QApplication *app);
+    void retranslateUi();
     QString name() { return PLUGIN_NAME; }
     QString version() { return PLUGIN_VERSION; }
 
@@ -35,6 +37,11 @@ public:
 private:
     QMenu *m_mainMenu;
     QActionGroup *actionGroup;
+    QAction *googleAction;
+    QAction *baiduAction;
+    QAction *bingAction;
+    QAction *githubAction;
+    QAction *stackoverflowAction;
 };
 
 #endif /* SERCHONWEB_H_ */

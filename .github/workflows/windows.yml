@@ -30,6 +30,7 @@ jobs:
 
       - name: Build all
         run: |
+          lrelease *.pro
           qmake -spec win32-g++
           mingw32-make -j8
 
