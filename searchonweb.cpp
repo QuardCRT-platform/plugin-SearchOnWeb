@@ -52,7 +52,7 @@ QList<QAction *> SearchOnWeb::terminalContextAction(QString selectedText, QStrin
 
     if(checkedAction == googleAction)
     {
-        QAction *googleAction = new QAction(tr("Google"), parentMenu);
+        QAction *googleAction = new QAction(tr("Google Search"), parentMenu);
         googleAction->setData("https://www.google.com/search?q=" + selectedText);
         connect(googleAction, &QAction::triggered, [=](){
             QDesktopServices::openUrl(QUrl(googleAction->data().toString()));
@@ -61,7 +61,7 @@ QList<QAction *> SearchOnWeb::terminalContextAction(QString selectedText, QStrin
     }
     else if(checkedAction == baiduAction)
     {
-        QAction *baiduAction = new QAction(tr("Baidu"), parentMenu);
+        QAction *baiduAction = new QAction(tr("Baidu Search"), parentMenu);
         baiduAction->setData("https://www.baidu.com/s?wd=" + selectedText);
         connect(baiduAction, &QAction::triggered, [=](){
             QDesktopServices::openUrl(QUrl(baiduAction->data().toString()));
@@ -70,7 +70,7 @@ QList<QAction *> SearchOnWeb::terminalContextAction(QString selectedText, QStrin
     }
     else if(checkedAction == bingAction)
     {
-        QAction *bingAction = new QAction(tr("Bing"), parentMenu);
+        QAction *bingAction = new QAction(tr("Bing Search"), parentMenu);
         bingAction->setData("https://bing.com/search?q=" + selectedText);
         connect(bingAction, &QAction::triggered, [=](){
             QDesktopServices::openUrl(QUrl(bingAction->data().toString()));
@@ -79,7 +79,7 @@ QList<QAction *> SearchOnWeb::terminalContextAction(QString selectedText, QStrin
     }
     else if(checkedAction == githubAction)
     {
-        QAction *githubAction = new QAction(tr("Github"), parentMenu);
+        QAction *githubAction = new QAction(tr("Github Search"), parentMenu);
         githubAction->setData("https://github.com/search?q=" + selectedText);
         connect(githubAction, &QAction::triggered, [=](){
             QDesktopServices::openUrl(QUrl(githubAction->data().toString()));
@@ -88,7 +88,7 @@ QList<QAction *> SearchOnWeb::terminalContextAction(QString selectedText, QStrin
     }
     else if(checkedAction == stackoverflowAction)
     {
-        QAction *stackoverflowAction = new QAction(tr("Stackoverflow"), parentMenu);
+        QAction *stackoverflowAction = new QAction(tr("Stackoverflow Search"), parentMenu);
         stackoverflowAction->setData("https://stackoverflow.com/search?q=" + selectedText);
         connect(stackoverflowAction, &QAction::triggered, [=](){
             QDesktopServices::openUrl(QUrl(stackoverflowAction->data().toString()));
