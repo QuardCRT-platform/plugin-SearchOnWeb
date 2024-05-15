@@ -2,6 +2,7 @@
 #include "searchonweb.h"
 
 #include <QMap>
+#include <QTimer>
 #include <QActionGroup>
 #include <QDesktopServices>
 
@@ -33,6 +34,45 @@ int SearchOnWeb::init(QMap<QString, QString> params, QWidget *parent)
     m_mainMenu->addAction(stackoverflowAction);
 
     googleAction->setChecked(true);
+    connect(actionGroup, &QActionGroup::triggered, [=](QAction *action){
+        QString actionStr = "google";
+        if(action == googleAction) {
+            actionStr = "google";
+        } else if(action == baiduAction) {
+            actionStr = "baidu";
+        } else if(action == bingAction) {
+            actionStr = "bing";
+        } else if(action == githubAction) {
+            actionStr = "github";
+        } else if(action == stackoverflowAction) {
+            actionStr = "stackoverflow";
+        }
+        emit writeSettings("SearchOnWeb","CheckedAction", QVariant::fromValue(actionStr));
+    });
+
+    QTimer::singleShot(10,this,[&](){
+        QVariant actionVariant;
+        emit readSettings("SearchOnWeb","CheckedAction", actionVariant);
+        QString actionStr = "google";
+        if(actionVariant.isValid()) {
+            actionStr = actionVariant.toString();
+        }
+        if(actionStr == "google") {
+            googleAction->setChecked(true);
+        } else if(actionStr == "baidu") {
+            baiduAction->setChecked(true);
+        } else if(actionStr == "bing") {
+            bingAction->setChecked(true);
+        } else if(actionStr == "github") {
+            githubAction->setChecked(true);
+        } else if(actionStr == "stackoverflow") {
+            stackoverflowAction->setChecked(true);
+        } else {
+            googleAction->setChecked(true);
+            actionStr = "google";
+        }
+        emit writeSettings("SearchOnWeb","CheckedAction", QVariant::fromValue(actionStr));
+    });
 
     return 0;
 }
