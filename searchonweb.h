@@ -6,7 +6,7 @@
 #include "plugininterface.h"
 
 #define PLUGIN_NAME    "Search On Web"
-#define PLUGIN_VERSION "0.0.3"
+#define PLUGIN_VERSION "0.0.4"
 
 class SearchOnWeb : public PluginInterface
 {
