@@ -7,6 +7,7 @@
 
 #define PLUGIN_NAME    "Search On Web"
 #define PLUGIN_VERSION "0.0.4"
+#define PLUGIN_WEBSITE "https://github.com/QuardCRT-platform/plugin-SearchOnWeb"
 
 class SearchOnWeb : public PluginInterface
 {
@@ -28,6 +29,7 @@ public:
     QMap<QString,void *> metaObject() {
         QMap<QString,void *> ret;
         ret.insert("QMenu", (void *)m_mainMenu);
+        ret.insert("website", (void *)(&m_website));
         return ret;
     }
 
@@ -36,6 +38,7 @@ public:
 
 private:
     QMenu *m_mainMenu;
+    QString m_website = QString(PLUGIN_WEBSITE);
     QActionGroup *actionGroup;
     QAction *googleAction;
     QAction *baiduAction;
