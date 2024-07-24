@@ -6,7 +6,7 @@
 #include "plugininterface.h"
 
 #define PLUGIN_NAME    "Search On Web"
-#define PLUGIN_VERSION "0.0.4"
+#define PLUGIN_VERSION "0.0.5"
 #define PLUGIN_WEBSITE "https://github.com/QuardCRT-platform/plugin-SearchOnWeb"
 
 class SearchOnWeb : public PluginInterface
